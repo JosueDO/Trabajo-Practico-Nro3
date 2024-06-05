@@ -1,18 +1,19 @@
 
-
-
 Snake serpiente;
 ParteCuerpo objeto;
+private Escenario escenario;
 float velocidad = 4.0;
 
 void setup() {
-  size(600, 700);
+  size(600, 600);
   serpiente = new Snake(new PVector(100, 100));
   objeto = new ParteCuerpo(new PVector(200, 200));
+  escenario= new Escenario();
 }
 
 void draw() {
-  background(0);  
+  background(0); 
+  escenario.display();
   serpiente.display();
   objeto.display();
   
