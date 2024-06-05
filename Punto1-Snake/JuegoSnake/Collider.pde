@@ -1,16 +1,16 @@
-class Colision {
+class Collider {
   private PVector pos;
   private float ancho;
   private float alto;
 
-  public Colision(float ancho, float alto, PVector pos) {
+  public Collider(float ancho, float alto, PVector pos) {
     this.ancho = ancho;
     this.alto = alto;
     this.pos = pos;
   }
 
 
-  public boolean validarColision(Colision otroCollider) {
+  public boolean validarColision(Collider otroCollider) {
     boolean isCollide = false;
 
     if (this.pos.x < otroCollider.getPos().x + otroCollider.getAncho() &&

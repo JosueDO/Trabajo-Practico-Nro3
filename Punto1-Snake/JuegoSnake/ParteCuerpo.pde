@@ -1,19 +1,19 @@
-class ObjetoRecolector extends GameObject {
-  private Colision colision;
+class ParteCuerpo extends GameObject implements IDisplayable, IMoveable{
+  private Collider colision;
 
-  public ObjetoRecolector(PVector posicion) {
+  public ParteCuerpo(PVector posicion) {
     this.posicion = posicion;
-    this.colision = new Colision(Constantes.ancho, Constantes.largo, posicion);
+    this.colision = new Collider(Constantes.ancho, Constantes.largo, posicion);
   }
 
   @Override
-  void dibujar() {
+  void display() {
     fill(111, 22, 11);
     rect(this.posicion.x, this.posicion.y, Constantes.ancho, Constantes.largo);
   }
 
   @Override
-  void mover(float dx, float dy) {
+  void move(float dx, float dy) {
     this.posicion.add(dx, dy);
     this.colision.setPos(this.posicion);
   }
@@ -27,7 +27,7 @@ class ObjetoRecolector extends GameObject {
     return this.posicion;
   }
 
-  public boolean colisionaCon(Colision otroCollider) {
+  public boolean colisionaCon(Collider otroCollider) {
     return this.colision.validarColision(otroCollider);
   }
 }
