@@ -5,6 +5,7 @@ private Escenario escenario;
 float velocidad = 4.0;
 
 void setup() {
+  frameRate(60);
   size(600, 600);
   serpiente = new Snake(new PVector(100, 100));
   objeto = new ParteCuerpo(new PVector(200, 200));
