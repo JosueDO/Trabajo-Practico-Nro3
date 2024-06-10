@@ -1,35 +1,24 @@
-class Snake extends GameObject implements IDisplayable, IMoveable{
-  private Collider colision;
-  private color tinte;
+class Snake implements IDisplayable, IMoveable{
+  private ParteCuerpo[] cuerpo;
+  private Escenario escenario;
 
-  public Snake(PVector posicion) {
-    this.posicion = posicion;
-    this.colision = new Collider(Constantes.ancho, Constantes.largo, posicion);
-    this.tinte = color(666, 111, 0); 
+
+  public Snake(Escenario escenario) {
+    this.escenario=escenario;
+    cuerpo= new ParteCuerpo[100];
+    cuerpo[0]= new ParteCuerpo(escenario.posicion,escenario.anchoCelda,escenario.altoCelda);
   }
 
   @Override
-  void display() {
-    fill(this.tinte);
-    rect(this.posicion.x, this.posicion.y, Constantes.ancho,Constantes.largo);
+  public void display() {
+    for(ParteCuerpo c:cuerpo){
+      if(c!=null){
+         c.display();
+      }
+    }
   }
 
   @Override
-  void move(float dx, float dy) {
-    this.posicion.add(dx, dy);
-    this.colision.setPos(this.posicion); 
-  }
-
-  public void setPosicion(PVector posicion) {
-    this.posicion = posicion;
-    this.colision.setPos(posicion);
-  }
-
-  public PVector getPosicion() {
-    return this.posicion;
-  }
-
-  public boolean colisionaCon(Collider otroCollider) {
-    return this.colision.validarColision(otroCollider);
+  public void move() {
   }
 }
