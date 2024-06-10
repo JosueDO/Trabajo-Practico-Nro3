@@ -19,4 +19,10 @@ class Escenario extends GameObject implements IDisplayable{
     rectMode(CENTER);
     rect(this.posicion.x,this.posicion.y,this.ancho,this.alto);
   }
+  public float getAnchoCelda(){
+    return this.anchoCelda;
+  }
+  public float getAltoCelda(){
+    return this.altoCelda;
+  }
 }

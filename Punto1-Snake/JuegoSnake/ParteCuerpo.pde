@@ -1,33 +1,22 @@
 class ParteCuerpo extends GameObject implements IDisplayable, IMoveable{
-  private Collider colision;
+  private Collider collider;
+  private PVector velocidad;
 
-  public ParteCuerpo(PVector posicion) {
+  public ParteCuerpo(PVector posicion,float ancho,float alto) {
+    this.ancho=ancho;
+    this.alto=alto;
     this.posicion = posicion;
-    this.colision = new Collider(Constantes.ancho, Constantes.largo, posicion);
+    this.collider= new Collider(this.posicion,this.ancho,this.alto);
   }
 
   @Override
-  void display() {
-    fill(111, 22, 11);
-    rect(this.posicion.x, this.posicion.y, Constantes.ancho, Constantes.largo);
+  public void display() {
   }
-
-  @Override
-  void move(float dx, float dy) {
-    this.posicion.add(dx, dy);
-    this.colision.setPos(this.posicion);
+  public void move(){
   }
-
-  public void setPosicion(PVector posicion) {
+  
+  public void setPos(PVector posicion) {
     this.posicion = posicion;
-    this.colision.setPos(posicion);
-  }
-
-  public PVector getPosicion() {
-    return this.posicion;
-  }
-
-  public boolean colisionaCon(Collider otroCollider) {
-    return this.colision.validarColision(otroCollider);
+    this.collider.setPos(posicion);
   }
 }
