@@ -1,9 +1,11 @@
 private Snake serpiente;
 private Escenario escenario;
+private HUD hud;
 
 public void setup() {
   frameRate(60);
   size(600, 600);
+  hud= new HUD();
   escenario= new Escenario();
   serpiente = new Snake(escenario);
 }
@@ -11,6 +13,7 @@ public void setup() {
 public void draw() {
   background(0); 
   escenario.display();
+  hud.mostrarPuntaje(serpiente);
   serpiente.display();
   serpiente.move();
 }
