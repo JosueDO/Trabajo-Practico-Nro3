@@ -16,11 +16,13 @@ class ParteCuerpo extends GameObject implements IDisplayable, IMoveable{
   @Override
   public void display() {
     fill(cuadro);
+    strokeWeight(2);
+    stroke(0);
     rectMode(CENTER);
     rect(this.posicion.x,this.posicion.y,this.ancho,this.alto);
+    strokeWeight(1);
   }
   public void move(){
-    this.posicion.add(this.velocidad);
   }
   
   public void setPos(PVector posicion) {

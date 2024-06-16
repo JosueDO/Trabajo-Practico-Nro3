@@ -8,7 +8,7 @@ class Snake implements IDisplayable, IMoveable{
     colorSnake=255;
     this.escenario=escenario;
     cuerpo= new ParteCuerpo[100];
-    cuerpo[0]= new ParteCuerpo(this.escenario.posicion,this.escenario.anchoCelda,this.escenario.altoCelda,colorSnake);
+    cuerpo[0]= new ParteCuerpo(new PVector(escenario.posicion.x+escenario.ancho/2,escenario.posicion.y+escenario.alto/2),this.escenario.anchoCelda,this.escenario.altoCelda,colorSnake);
   }
 
   @Override
