@@ -2,9 +2,11 @@ class Snake implements IDisplayable, IMoveable{
   private ParteCuerpo[] cuerpo;
   private Escenario escenario;
   private int colorSnake;
+  private int puntaje;
 
 
   public Snake(Escenario escenario) {
+    this.puntaje=0;
     colorSnake=255;
     this.escenario=escenario;
     cuerpo= new ParteCuerpo[100];
@@ -27,5 +29,9 @@ class Snake implements IDisplayable, IMoveable{
          c.move();
       }
     }
+  }
+  
+  public int getPuntaje(){
+    return this.puntaje;
   }
 }
