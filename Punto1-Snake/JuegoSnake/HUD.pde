@@ -9,4 +9,7 @@ class HUD{
     textSize(25);
     text("PUNTAJE: "+snake.getPuntaje(),20,height/16);
   }
+  public void mostrarTiempo(float cronometro){
+    text("TIEMPO: "+(int)cronometro,width/5*4,height/16);
+  }
 }

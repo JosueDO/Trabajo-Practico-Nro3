@@ -1,6 +1,10 @@
 private Snake serpiente;
 private Escenario escenario;
 private HUD hud;
+private float cronometro;
+private int tiempoActual,tiempoInicial;
+private Animal animal;
+private ArrayList<Animal> animales;
 
 public void setup() {
   frameRate(60);
@@ -8,27 +12,50 @@ public void setup() {
   hud= new HUD();
   escenario= new Escenario();
   serpiente = new Snake(escenario);
+  tiempoInicial=millis();
+  generarAnimal();
+  
 }
 
 public void draw() {
+
   background(0); 
+  cronometro+=Time.getDeltaTime(frameRate);
   escenario.display();
+  animal.display();
   hud.mostrarPuntaje(serpiente);
+  hud.mostrarTiempo(cronometro);
   serpiente.display();
-  serpiente.move();
+  tiempoActual=millis();
+  if (tiempoActual - tiempoInicial >= 400) {  // Actualizar cada 400 ms
+    serpiente.move();
+    tiempoInicial = tiempoActual;
+  }
+  
 }
 
 public void keyReleased(){
   if(key=='a'||key=='A'||keyCode==LEFT){
-    serpiente.cuerpo[0].setVelocidad(new PVector(-escenario.getAnchoCelda(),0));
+    serpiente.setVelocidad(new PVector(-1,0));
   }
   if(key=='s'||key=='S'||keyCode==DOWN){
-    serpiente.cuerpo[0].setVelocidad(new PVector(0,escenario.getAltoCelda()));
+    serpiente.setVelocidad(new PVector(0,1));
   }
   if(key=='W'||key=='w'||keyCode==UP){
-    serpiente.cuerpo[0].setVelocidad(new PVector(0,-escenario.getAltoCelda()));
+    serpiente.setVelocidad(new PVector(0,-1));
   }
   if(key=='D'||key=='d'||keyCode==RIGHT){
-    serpiente.cuerpo[0].setVelocidad(new PVector(escenario.getAnchoCelda(),0));
+    serpiente.setVelocidad(new PVector(1,0));
+  }
+}
+void generarAnimal() {
+  int x = (int)random(1,4);
+  
+  if (x== 1) {
+    animal= new Insecto(escenario);
+  } else if (x==2) {
+    animal= new Pajaro(escenario);
+  } else {
+    animal= new Raton(escenario);
   }
 }
