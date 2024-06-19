@@ -2,6 +2,7 @@ abstract class GameObject {
   protected PVector posicion;
   protected float ancho;
   protected float alto;
+  protected Collider collider;
   
 
 
@@ -25,5 +26,13 @@ abstract class GameObject {
 
   public void setPos(PVector posicion) {
     this.posicion = posicion;
+  }
+  
+  public Collider getCollider(){
+    return this.collider;
+  }
+  
+  public void setCollider(Collider collider){
+    this.collider=collider;
   }
 }

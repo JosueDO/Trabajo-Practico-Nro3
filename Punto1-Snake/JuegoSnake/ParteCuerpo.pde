@@ -1,5 +1,5 @@
 class ParteCuerpo extends GameObject implements IDisplayable, IMoveable{
-  private Collider collider;
+
   private PVector velocidad;
   private PVector posicion2;
   private color cuadro;
@@ -29,7 +29,5 @@ class ParteCuerpo extends GameObject implements IDisplayable, IMoveable{
     this.posicion = posicion;
     this.collider.setPos(posicion);
   }
-  public void setVelocidad(PVector velocidad){
-    this.velocidad=velocidad;
-  }
+  
 }
